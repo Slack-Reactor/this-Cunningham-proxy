@@ -81,7 +81,7 @@ export default class Attraction extends React.Component {
     if (JSON.stringify(form) === JSON.stringify(current.overview)) {
       console.log('Must Submit Improvements to Current Attraction Listing');
     } else {
-      axios.post(`/api/showcase/${id}`, { form })
+      axios.post(`http://localhost:3001/api/showcase/${id}`, { form })
         .then(({ data }) => {
           this.openCloseForm();
           console.log(data.message);
@@ -105,7 +105,7 @@ export default class Attraction extends React.Component {
         likedStatus: !current.likedStatus,
       },
     }, () => {
-      axios.patch(`api/showcase/like/${id}`, { likedStatus: !current.likedStatus })
+      axios.patch(`http://localhost:3001/api/showcase/like/${id}`, { likedStatus: !current.likedStatus })
         .catch((err) => {
           console.log('Error PATCH likedStatus ', err);
         });
