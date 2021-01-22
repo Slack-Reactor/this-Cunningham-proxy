@@ -1,0 +1,13 @@
+node_modules
+config
+images
+.DS_Store
+
+# Ignore test-related files
+/coverage.data
+/coverage/
+
+/public/bundle.js
+
+# production files
+dist
