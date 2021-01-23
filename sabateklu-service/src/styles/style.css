@@ -1,3 +1,8 @@
+#saba {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
 /*Adventure Component*/
 .image {
   width: 279.5px;
