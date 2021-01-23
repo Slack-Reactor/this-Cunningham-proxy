@@ -6,10 +6,13 @@ import Tickets from './Tickets';
 import Images from './Images';
 import css from '../styles/attraction.module.css';
 
+const tripLogo = 'https://thumbs.bfldr.com/at/q7vbfh-g63bz4-7oss5e/v/12877929?expiry=1611963494&fit=bounds&height=800&sig=OTQ1YTViN2QyNTMyN2Y4N2YzMWJmMmQxMzQ0NDliOWI0NGVhZDFjNQ%3D%3D&width=1100';
+
 export default class Attraction extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      allAttractions: [],
       current: null,
       likeHover: false,
       form: {
@@ -19,8 +22,10 @@ export default class Attraction extends React.Component {
         address: '',
       },
       clickImproved: false,
+      browse: false,
     };
     this.updateHeartHover = this.updateHeartHover.bind(this);
+    this.buttonBrowser = this.buttonBrowser.bind(this);
     this.updateLikeStatus = this.updateLikeStatus.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.submitImprovements = this.submitImprovements.bind(this);
@@ -28,10 +33,12 @@ export default class Attraction extends React.Component {
   }
 
   componentDidMount() {
+    const { current } = this.state;
     axios.get('http://localhost:3001/api/showcase')
       .then(({ data }) => {
         this.setState({
-          current: data[1],
+          allAttractions: data,
+          current: current || data[0],
         });
       }).catch((err) => console.log('error GETTING all', err));
   }
@@ -54,6 +61,12 @@ export default class Attraction extends React.Component {
         ...form,
         [e.target.name]: newValue,
       },
+    });
+  }
+
+  buttonBrowser(attraction) {
+    this.setState({
+      current: attraction,
     });
   }
 
@@ -114,12 +127,22 @@ export default class Attraction extends React.Component {
 
   render() {
     const {
-      current, likeHover, form, clickImproved,
+      current, likeHover, form, clickImproved, allAttractions, browse,
     } = this.state;
     return (
       <>
         {current ? (
           <div className={css.attraction}>
+            <div className={css.trip} onClick={() => this.setState({ browse: !browse})}>
+              <img src={tripLogo} alt="triplogo" />
+            </div>
+            {browse && (
+            <div className={css.buttons}>
+              {allAttractions.map((attraction, i) => (
+                <button key={Math.random().toString()} className={css.browseButton} type="button" onClick={() => this.buttonBrowser(attraction)}>{i}</button>
+              ))}
+            </div>
+            )}
             <Header
               current={current}
               updateHeartHover={this.updateHeartHover}

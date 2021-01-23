@@ -25,6 +25,17 @@ export default class Images extends React.Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      const { images } = this.props;
+      const sliced = images.slice();
+      this.setState({
+        attractionImages: sliced,
+        displayedImage: sliced[0],
+      });
+    }
+  }
+
   changeImage(direction) {
     const { index, attractionImages } = this.state;
     if (direction === 'next') {
