@@ -133,7 +133,7 @@ export default class Attraction extends React.Component {
       <>
         {current ? (
           <div className={css.attraction}>
-            <div className={css.trip} onClick={() => this.setState({ browse: !browse})}>
+            <div className={css.trip} onClick={() => this.setState({ browse: !browse })}>
               <img src={tripLogo} alt="triplogo" />
             </div>
             {browse && (
@@ -159,7 +159,11 @@ export default class Attraction extends React.Component {
               id={current._id} /* eslint-disable-line no-underscore-dangle */
             />
             <Tickets current={current} />
-            <Images images={current.imageUrl} travelersChoice={current.travelersChoiceAward} />
+            <Images
+              images={current.imageUrl}
+              travelersChoice={current.travelersChoiceAward}
+              id={current._id} /* eslint-disable-line no-underscore-dangle */
+            />
           </div>
         ) : <div className={css.loading}>Loading...</div>}
       </>

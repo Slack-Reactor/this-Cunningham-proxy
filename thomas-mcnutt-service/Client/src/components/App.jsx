@@ -79,7 +79,7 @@ class App extends React.Component {
           { location
             && (
               <div>
-                <div className="reviews">
+                {/* <div className="reviews"> */}
                   <Grid container spacing={0}>
                     <StyledWhatTravellers item xs={3}>
                       What travelers are saying about
@@ -112,7 +112,7 @@ class App extends React.Component {
                     reviews={location.reviews}
                     // ratings={location.ratings}
                   />
-                </div>
+                {/* </div> */}
                 <div className="map">
                   <Map
                     coords={location.coords}
