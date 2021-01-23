@@ -249,9 +249,7 @@ class Adventure extends Component {
 }
 
 Adventure.propTypes = {
-  updateLiked: PropTypes.shape({
-    updateLiked: PropTypes.func,
-  }).isRequired,
+  updateLiked: PropTypes.func.isRequired,
   adventure: PropTypes.shape({
     _id: PropTypes.string,
     name: PropTypes.string,

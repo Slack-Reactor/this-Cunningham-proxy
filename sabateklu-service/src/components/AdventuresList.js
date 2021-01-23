@@ -13,7 +13,7 @@ function AdventuresList({ adventures, updateLiked }) {
       <div className="list">
         {
           adventures.map((adv) => (
-            <Grid item xs={3} key={adv._id}>
+            <Grid item xs={3} key={Math.random().toString()}>
               {' '}
               <Adventure adventure={adv} updateLiked={updateLiked} />
               {' '}
@@ -27,23 +27,8 @@ function AdventuresList({ adventures, updateLiked }) {
 }
 
 AdventuresList.propTypes = {
-  updateLiked: PropTypes.shape({
-    updateLiked: PropTypes.func,
-  }).isRequired,
-  adventures: PropTypes.shape({
-    map: PropTypes.func,
-    updateLiked: PropTypes.func,
-    adventure: PropTypes.shape({
-      _id: PropTypes.string,
-      name: PropTypes.string,
-      image: PropTypes.string,
-      reviews: PropTypes.number,
-      rating: PropTypes.number,
-      price: PropTypes.string,
-      liked: PropTypes.bool,
-      timesBooked: PropTypes.number,
-    }).isRequired,
-  }).isRequired,
+  updateLiked: PropTypes.func.isRequired,
+  adventures: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default AdventuresList;
