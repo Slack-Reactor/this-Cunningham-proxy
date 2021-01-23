@@ -1,5 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const Reviews = require('../database/Reviews.js');
+
+const app = express();
+
+app.use(cors());
 
 const router = express.Router();
 

@@ -5,4 +5,4 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import 'fontsource-roboto';
 import App from './components/App';
 
-ReactDOM.render(<App />, document.getElementById('App'));
+ReactDOM.render(<App />, document.getElementById('collin'));
