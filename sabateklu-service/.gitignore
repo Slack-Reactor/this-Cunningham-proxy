@@ -5,3 +5,4 @@
 eslintrc.js
 /scraper/unsplashScraper.js
 /coverage
+/public/bundle.js
