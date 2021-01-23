@@ -31,9 +31,8 @@
   flex-wrap: nowrap;
   overflow-x: auto;
 
-  .adventure {
-    flex: 0 0 auto;
-  }
+.adventure {
+  flex: 0 0 auto;
 }
 
 .body {
