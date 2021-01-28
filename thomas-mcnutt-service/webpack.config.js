@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
   target: 'node',
-  entry: './client/src',
+  entry: './Client/src',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, './client/dist'),
+    path: path.resolve(__dirname, './Client/dist'),
   },
   devtool: 'inline-source-map',
   devServer: {

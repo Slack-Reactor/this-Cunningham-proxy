@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 // eslint-disable-next-line no-unused-vars
 const db = require('../Database/index.js');
 
@@ -9,6 +10,7 @@ const Attractions = require('../Database/attraction.js');
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

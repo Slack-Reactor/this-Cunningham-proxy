@@ -34,7 +34,8 @@ export default class Attraction extends React.Component {
 
   componentDidMount() {
     const { current } = this.state;
-    axios.get('http://localhost:3001/api/showcase')
+    // axios.get('http://localhost:3001/api/showcase')
+    axios.get('http://3.17.61.21:3001/api/showcase')
       .then(({ data }) => {
         this.setState({
           allAttractions: data,
@@ -94,7 +95,8 @@ export default class Attraction extends React.Component {
     if (JSON.stringify(form) === JSON.stringify(current.overview)) {
       console.log('Must Submit Improvements to Current Attraction Listing');
     } else {
-      axios.post(`http://localhost:3001/api/showcase/${id}`, { form })
+      // axios.post(`http://localhost:3001/api/showcase/${id}`, { form })
+      axios.post(`http://3.17.61.21:3001/api/showcase/${id}`, { form })
         .then(({ data }) => {
           this.openCloseForm();
           console.log(data.message);
@@ -118,7 +120,8 @@ export default class Attraction extends React.Component {
         likedStatus: !current.likedStatus,
       },
     }, () => {
-      axios.patch(`http://localhost:3001/api/showcase/like/${id}`, { likedStatus: !current.likedStatus })
+      // axios.patch(`http://localhost:3001/api/showcase/like/${id}`, { likedStatus: !current.likedStatus })
+      axios.patch(`http://3.17.61.21:3001/api/showcase/like/${id}`, { likedStatus: !current.likedStatus })
         .catch((err) => {
           console.log('Error PATCH likedStatus ', err);
         });
