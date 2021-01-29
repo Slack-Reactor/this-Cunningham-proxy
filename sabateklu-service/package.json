@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --mode=development",
-    "build": "webpack --mode=production",
+    "build": "webpack --config webpack.config.js",
     "dev": "webpack serve",
     "seed": "node database/seed.js",
     "server": "npx nodemon server/index.js",

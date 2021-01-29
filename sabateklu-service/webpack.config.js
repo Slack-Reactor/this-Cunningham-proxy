@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'public'),
@@ -23,7 +23,6 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'public'),
   },
-  watch: true,
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   resolve: { extensions: ['.js', '.jsx'] },
 };
