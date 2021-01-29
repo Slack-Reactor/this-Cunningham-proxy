@@ -1,12 +1,13 @@
 const path = require('path');
 
 module.exports = {
-  target: 'node',
+  // target: 'node',
   entry: './src',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -41,5 +42,5 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
-  mode: 'development',
+  mode: 'production',
 };
