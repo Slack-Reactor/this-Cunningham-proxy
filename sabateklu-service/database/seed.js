@@ -48,6 +48,6 @@ for (let i = 0; i < 100; i++) {
       }
     })
     .catch((err) => {
-      throw err;
+      console.log(err);
     });
 }
