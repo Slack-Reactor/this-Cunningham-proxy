@@ -1,0 +1,76 @@
+version: '3.4'
+
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    # environment:
+    #   MONGO_INITDB_DATABASE: tripadvisor-db
+    volumes:
+      # - ./db/seed.js:/docker-entrypoint-initdb.d/seed.js:ro
+      # - ./data:/data/db
+      - tripadvisor-db-chris:/data/db
+    ports:
+      - 27017:27017
+  proxyservice:
+    container_name: proxy-app
+    image: proxyservice
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 80:3000
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  thiscunninghamservice:
+    container_name: chris-app
+    image: thiscunninghamservice
+    build:
+      context: ../this-Cunningham-service
+      dockerfile: ./Dockerfile
+    ports:
+      - 3001:3001
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  sabaservice:
+    container_name: saba-app
+    image: saba-image
+    build:
+      context: ../sabateklu-service
+      dockerfile: ./Dockerfile
+    ports:
+      - 3002:3002
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  thomasservice:
+    container_name: thomas-app
+    image: thomas-image
+    build:
+      context: ../thomas-mcnutt-service
+      dockerfile: ./Dockerfile
+    ports:
+      - 3003:3003
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  collinservice:
+    container_name: collin-app
+    image: collin-image
+    build:
+      context: ../collin-newman-service
+      dockerfile: ./Dockerfile
+    ports:
+      - 3004:3004
+    links:
+      - mongo
+    depends_on:
+      - mongo
+volumes:
+  tripadvisor-db-chris:
