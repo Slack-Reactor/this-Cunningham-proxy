@@ -1,17 +1,36 @@
 const path = require('path');
+const CompressionPlugin = require('compression-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: path.join(__dirname, 'Client/src/index.html'),
+  filename: 'index.html',
+  inject: 'body',
+});
 
 module.exports = {
   target: 'node',
   entry: './Client/src',
   output: {
-    filename: 'main.js',
+    filename: 'thomas-main.js',
     path: path.resolve(__dirname, './Client/dist'),
   },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   devServer: {
-    contentBase: './Client/dist', // this is for hot-reloading, check npm run hot in package.json setup
-    // can also specify port: 8080
+    contentBase: './Client/dist',
   },
+  plugins: [
+    new CleanWebpackPlugin(),
+    HTMLWebpackPluginConfig,
+    new CompressionPlugin({
+      filename: '[path][base].gz',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8,
+    }),
+  ],
   module: {
     rules: [
       {
@@ -33,5 +52,5 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
   },
-  mode: 'development',
+  mode: 'production',
 };
