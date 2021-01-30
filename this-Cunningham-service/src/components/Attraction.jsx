@@ -6,7 +6,7 @@ import Tickets from './Tickets';
 import Images from './Images';
 import css from '../styles/attraction.module.css';
 
-const tripLogo = 'https://thumbs.bfldr.com/at/q7vbfh-g63bz4-7oss5e/v/12877929?expiry=1611963494&fit=bounds&height=800&sig=OTQ1YTViN2QyNTMyN2Y4N2YzMWJmMmQxMzQ0NDliOWI0NGVhZDFjNQ%3D%3D&width=1100';
+const tripLogo = 'https://fec-tripadvisor-images.s3.us-east-2.amazonaws.com/images/Tripadvisor_Logo_circle-green_horizontal-lockup_registered-small_RGB.svg';
 
 export default class Attraction extends React.Component {
   constructor(props) {
