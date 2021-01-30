@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.get('*.js', (req, res, next) => {
-  req.url += '.gz';
+  // req.url += '.gz';
   res.set('Content-Encoding', 'gzip');
   res.set('Content-Type', 'text/javascript');
   console.log('sent');
