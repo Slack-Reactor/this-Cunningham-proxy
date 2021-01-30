@@ -78,7 +78,7 @@ class App extends React.Component {
         <StyledDoc>
           { location
             && (
-              <div>
+              // <div>
                 {/* <div className="reviews"> */}
                   <Grid container spacing={0}>
                     <StyledWhatTravellers item xs={3}>
@@ -118,7 +118,7 @@ class App extends React.Component {
                     coords={location.coords}
                   />
                 </div>
-              </div>
+              // </div>
             ) }
           {location && restaurants && mainAttraction && attractions && (
           <div className="information-panel">
