@@ -78,47 +78,47 @@ class App extends React.Component {
         <StyledDoc>
           { location
             && (
-              // <div>
+              <div>
                 {/* <div className="reviews"> */}
-                  <Grid container spacing={0}>
-                    <StyledWhatTravellers item xs={3}>
-                      What travelers are saying about
-                      {' '}
-                      {location.Name}
-                    </StyledWhatTravellers>
-                    <RatingBubbles item xs={1}>
-                      <h1 style={{ float: 'right', top: '-50' }}>
-                        {location.ratings.avg}
-                      </h1>
-                    </RatingBubbles>
-                    <RatingBubbles item xs={1}>
-                      <Rating
-                        style={{ color: 'rgb(52, 224, 161' }}
-                        name="customized-icons"
-                        value={location.ratings.avg}
-                        precision={0.5}
-                        size="small"
-                        icon={<FiberManualRecordIcon />}
-                        getLabelText={() => `${location.ratings.total} reviews`}
-                      />
-                    </RatingBubbles>
-                    <ReviewStayRight item xs={7}>
-                      <h5 style={{ float: 'right' }}>
-                        {`Read all ${location.ratings.total} reviews`}
-                      </h5>
-                    </ReviewStayRight>
-                  </Grid>
-                  <Reviews
-                    reviews={location.reviews}
-                    // ratings={location.ratings}
-                  />
+                <Grid container spacing={0}>
+                  <StyledWhatTravellers item xs={3}>
+                    What travelers are saying about
+                    {' '}
+                    {location.Name}
+                  </StyledWhatTravellers>
+                  <RatingBubbles item xs={1}>
+                    <h1 style={{ float: 'right', top: '-50' }}>
+                      {location.ratings.avg}
+                    </h1>
+                  </RatingBubbles>
+                  <RatingBubbles item xs={1}>
+                    <Rating
+                      style={{ color: 'rgb(52, 224, 161' }}
+                      name="customized-icons"
+                      value={location.ratings.avg}
+                      precision={0.5}
+                      size="small"
+                      icon={<FiberManualRecordIcon />}
+                      getLabelText={() => `${location.ratings.total} reviews`}
+                    />
+                  </RatingBubbles>
+                  <ReviewStayRight item xs={7}>
+                    <h5 style={{ float: 'right' }}>
+                      {`Read all ${location.ratings.total} reviews`}
+                    </h5>
+                  </ReviewStayRight>
+                </Grid>
+                <Reviews
+                  reviews={location.reviews}
+                  // ratings={location.ratings}
+                />
                 {/* </div> */}
                 <div className="map">
                   <Map
                     coords={location.coords}
                   />
                 </div>
-              // </div>
+              </div>
             ) }
           {location && restaurants && mainAttraction && attractions && (
           <div className="information-panel">
