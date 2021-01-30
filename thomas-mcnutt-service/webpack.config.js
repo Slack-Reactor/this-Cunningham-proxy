@@ -13,7 +13,7 @@ module.exports = {
   target: 'node',
   entry: './Client/src',
   output: {
-    filename: 'thomas-main.js',
+    filename: 'thomas-main-edited.js',
     path: path.resolve(__dirname, './Client/dist'),
   },
   devtool: 'source-map',
@@ -52,5 +52,5 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json'],
   },
-  mode: 'production',
+  mode: 'development',
 };
