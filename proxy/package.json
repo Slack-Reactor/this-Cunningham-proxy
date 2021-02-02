@@ -4,14 +4,9 @@
   "description": "proxy",
   "main": "server.js",
   "scripts": {
+    "start": "ttab npx nodemon server.js && ttab 'cd ../this-Cunningham-service; npm run start' && ttab 'cd ../sabateklu-service; npm run server' && ttab 'cd ../thomas-mcnutt-service; npm run start' && ttab 'cd ../collin-newman-service; npm run start'",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon server.js"
-  },
-  "proxy": {
-    "/api/showcase": {
-      "target": "http://localhost:3001/api/showcase",
-      "changeOrigin": true
-    }
+    "launch": ""
   },
   "author": "chris cunningham",
   "license": "ISC",

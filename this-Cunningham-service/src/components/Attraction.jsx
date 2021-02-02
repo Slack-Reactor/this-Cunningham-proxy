@@ -6,10 +6,13 @@ import Tickets from './Tickets';
 import Images from './Images';
 import css from '../styles/attraction.module.css';
 
+const tripLogo = 'https://fec-tripadvisor-images.s3.us-east-2.amazonaws.com/images/Tripadvisor_Logo_circle-green_horizontal-lockup_registered-small_RGB.svg';
+
 export default class Attraction extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      allAttractions: [],
       current: null,
       likeHover: false,
       form: {
@@ -19,8 +22,10 @@ export default class Attraction extends React.Component {
         address: '',
       },
       clickImproved: false,
+      browse: false,
     };
     this.updateHeartHover = this.updateHeartHover.bind(this);
+    this.buttonBrowser = this.buttonBrowser.bind(this);
     this.updateLikeStatus = this.updateLikeStatus.bind(this);
     this.handleFormChange = this.handleFormChange.bind(this);
     this.submitImprovements = this.submitImprovements.bind(this);
@@ -28,10 +33,13 @@ export default class Attraction extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3001/api/showcase')
+    const { current } = this.state;
+    // axios.get('http://localhost:3001/api/showcase')
+    axios.get('http://3.17.61.21:3001/api/showcase')
       .then(({ data }) => {
         this.setState({
-          current: data[1],
+          allAttractions: data,
+          current: current || data[0],
         });
       }).catch((err) => console.log('error GETTING all', err));
   }
@@ -54,6 +62,12 @@ export default class Attraction extends React.Component {
         ...form,
         [e.target.name]: newValue,
       },
+    });
+  }
+
+  buttonBrowser(attraction) {
+    this.setState({
+      current: attraction,
     });
   }
 
@@ -81,7 +95,8 @@ export default class Attraction extends React.Component {
     if (JSON.stringify(form) === JSON.stringify(current.overview)) {
       console.log('Must Submit Improvements to Current Attraction Listing');
     } else {
-      axios.post(`/api/showcase/${id}`, { form })
+      // axios.post(`http://localhost:3001/api/showcase/${id}`, { form })
+      axios.post(`http://3.17.61.21:3001/api/showcase/${id}`, { form })
         .then(({ data }) => {
           this.openCloseForm();
           console.log(data.message);
@@ -105,7 +120,8 @@ export default class Attraction extends React.Component {
         likedStatus: !current.likedStatus,
       },
     }, () => {
-      axios.patch(`api/showcase/like/${id}`, { likedStatus: !current.likedStatus })
+      // axios.patch(`http://localhost:3001/api/showcase/like/${id}`, { likedStatus: !current.likedStatus })
+      axios.patch(`http://3.17.61.21:3001/api/showcase/like/${id}`, { likedStatus: !current.likedStatus })
         .catch((err) => {
           console.log('Error PATCH likedStatus ', err);
         });
@@ -114,12 +130,22 @@ export default class Attraction extends React.Component {
 
   render() {
     const {
-      current, likeHover, form, clickImproved,
+      current, likeHover, form, clickImproved, allAttractions, browse,
     } = this.state;
     return (
       <>
         {current ? (
           <div className={css.attraction}>
+            <div className={css.trip} onClick={() => this.setState({ browse: !browse })}>
+              <img src={tripLogo} alt="triplogo" />
+            </div>
+            {browse && (
+            <div className={css.buttons}>
+              {allAttractions.map((attraction, i) => (
+                <button key={Math.random().toString()} className={css.browseButton} type="button" onClick={() => this.buttonBrowser(attraction)}>{i}</button>
+              ))}
+            </div>
+            )}
             <Header
               current={current}
               updateHeartHover={this.updateHeartHover}
@@ -136,7 +162,11 @@ export default class Attraction extends React.Component {
               id={current._id} /* eslint-disable-line no-underscore-dangle */
             />
             <Tickets current={current} />
-            <Images images={current.imageUrl} travelersChoice={current.travelersChoiceAward} />
+            <Images
+              images={current.imageUrl}
+              travelersChoice={current.travelersChoiceAward}
+              id={current._id} /* eslint-disable-line no-underscore-dangle */
+            />
           </div>
         ) : <div className={css.loading}>Loading...</div>}
       </>

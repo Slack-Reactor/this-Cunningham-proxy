@@ -25,6 +25,25 @@ export default class Images extends React.Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      const { index } = this.state;
+      const { images, id } = this.props;
+      const sliced = images.slice();
+
+      if (id !== prevProps.id) {
+        this.setState({
+          index: 0,
+          displayedImage: sliced[0],
+        });
+      }
+      this.setState({
+        attractionImages: sliced,
+        displayedImage: sliced[index],
+      });
+    }
+  }
+
   changeImage(direction) {
     const { index, attractionImages } = this.state;
     if (direction === 'next') {
@@ -87,4 +106,5 @@ export default class Images extends React.Component {
 Images.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
   travelersChoice: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
 };
