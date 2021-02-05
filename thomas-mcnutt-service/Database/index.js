@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-// const mongoURI = 'mongodb://localhost/maps';
-const mongoURI = 'mongodb://mongo:27017/maps';
+const mongoURI = 'mongodb://localhost/maps';
+// const mongoURI = 'mongodb://mongo:27017/maps';
 
 module.exports = {
   db: () => {

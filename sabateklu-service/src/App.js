@@ -20,7 +20,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://3.17.61.21:3002/api/recommended')
+    // axios.get('http://3.17.61.21:3002/api/recommended')
+    axios.get('http://localhost:3002/api/recommended')
       .then((results) => {
         const topFour = results.data.slice(0, 4);
         this.setState({
@@ -31,7 +32,8 @@ class App extends Component {
   }
 
   updateLiked(elementId, liked) {
-    return axios.put(`http://3.17.61.21:3002/api/recommended/${elementId}`, { liked });
+    // return axios.put(`http://3.17.61.21:3002/api/recommended/${elementId}`, { liked });
+    return axios.put(`http://localhost:3002/api/recommended/${elementId}`, { liked });
   }
 
   viewSwitcher(event) {
@@ -40,7 +42,8 @@ class App extends Component {
     if (str === '1') {
       this.componentDidMount();
     } else {
-      axios.get(`http://3.17.61.21:3002/api/recommended/hello/${str}`)
+      // axios.get(`http://3.17.61.21:3002/api/recommended/hello/${str}`)
+      axios.get(`http://localhost:3002/api/recommended/hello/${str}`)
         .then((results) => {
           const topFour = results.data.slice(0, 4);
           while (topFour.length < 4) {
