@@ -30,7 +30,7 @@ class App extends React.Component {
 
   getLocation() {
     // Axios.get('http://3.17.61.21:3003/api/location')
-    Axios.get('/api/restaurant')
+    Axios.get('http://localhost:3003/api/location')
       .then((result) => {
         const { data } = result;
         this.setState({
@@ -42,7 +42,7 @@ class App extends React.Component {
 
   getRestaurants() {
     // Axios.get('http://3.17.61.21:3003/api/restaurant')
-    Axios.get('/api/restaurant')
+    Axios.get('http://localhost:3003/api/restaurant')
       .then((result) => {
         const { data } = result;
         this.setState({
@@ -54,7 +54,7 @@ class App extends React.Component {
 
   getAttractions() {
     // Axios.get('http://3.17.61.21:3003/api/attraction')
-    Axios.get('/api/attraction')
+    Axios.get('http://localhost:3003/api/attraction')
       .then((result) => {
         this.setState({
           attractions: result.data,

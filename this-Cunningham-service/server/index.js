@@ -12,13 +12,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('*.js', (req, res, next) => {
-  // req.url += '.gz';
-  res.set('Content-Encoding', 'gzip');
-  res.set('Content-Type', 'text/javascript');
-  console.log('sent');
-  next();
-});
+// app.get('*.js', (req, res, next) => {
+//   req.url += '.gz';
+//   res.set('Content-Encoding', 'gzip');
+//   res.set('Content-Type', 'text/javascript');
+//   console.log('sent');
+//   next();
+// });
 
 app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use('/', showcase);

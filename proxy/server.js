@@ -8,13 +8,13 @@ const port = 3000;
 
 app.use(cors());
 
-app.get('*.js', (req, res, next) => {
-  req.url += '.gz';
-  res.set('Content-Encoding', 'gzip');
-  res.set('Content-Type', 'text/javascript');
-  console.log('sent');
-  next();
-});
+// app.get('*.js', (req, res, next) => {
+//   req.url += '.gz';
+//   res.set('Content-Encoding', 'gzip');
+//   res.set('Content-Type', 'text/javascript');
+//   console.log('sent');
+//   next();
+// });
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
