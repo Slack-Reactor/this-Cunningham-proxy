@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const Map = ({ coords }) => (
   <div className="google-map">
     <GoogleMap
-      // bootstrapURLKeys={{ key: Key }}
+      bootstrapURLKeys={{ key: 'AIzaSyBgcfPG2Am2F4WBmwDJm85XFOqN-aMx_X4' }}
       center={[coords.lat, coords.long]}
       zoom={9}
     />
