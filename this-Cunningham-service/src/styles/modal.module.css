@@ -1,4 +1,4 @@
-.modal {
+.suggestionsModal {
   position: fixed;
   z-index: 500;
   background-color: #f9f2ea;
@@ -9,5 +9,17 @@
   top: 30%;
   box-sizing: border-box;
   border-radius: 10px;
-  /* border: 4px solid rgb(242, 178, 3); */
+}
+
+.calendarModal {
+  position: fixed;
+  z-index: 501;
+  background-color: #f9f2ea;
+  width: 650px;
+  box-shadow: 0px 3px 18px rgba(0, 0, 0, 0.233);
+  padding: 15px;
+  left: 40%;
+  top: 30%;
+  box-sizing: border-box;
+  border-radius: 10px;
 }

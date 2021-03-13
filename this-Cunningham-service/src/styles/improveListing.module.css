@@ -21,6 +21,10 @@
   color:rgba(44, 44, 44, 0.795)
 }
 
+.openFormBtn:hover {
+  border-bottom: solid 1.5px black;
+}
+
 h2 {
   font-weight: 400;
 }

@@ -15,8 +15,7 @@ showcase.get('/api/showcase', (req, res) => {
 
 showcase.get('/api/showcase/:id', (req, res) => {
   const { id } = req.params;
-
-  ShowCase.findById(id)
+  ShowCase.findOne({ attractionId: id })
     .then((data) => res.status(200).send(data))
     .catch(() => {
       res.status(400).send('Error Getting by Id');

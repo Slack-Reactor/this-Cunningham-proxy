@@ -3,19 +3,8 @@ import ReactDOM from 'react-dom';
 import Attraction from './components/Attraction';
 import './styles/styles.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-    };
-  }
-
-  render() {
-    return (
-      <Attraction />
-    );
-  }
-}
+const App = () => (
+  <Attraction />
+);
 
 ReactDOM.render(<App />, document.getElementById('app'));

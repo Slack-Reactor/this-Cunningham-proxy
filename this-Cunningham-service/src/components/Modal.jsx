@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from '../styles/modal.module.css';
 
-const Modal = ({ children }) => (
-  <div className={css.modal}>
+const Modal = ({ children, type }) => (
+  <div className={css[type]}>
     {children}
   </div>
 );

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FaRegClock } from 'react-icons/fa';
@@ -7,18 +8,18 @@ import ImproveListing from './ImproveListing';
 import css from '../styles/overview.module.css';
 
 const Overview = ({
-  overview, form, handleFormChange, clicked, openCloseForm, submitImprovements, id,
+  overview, form, handleFormChange, clicked, openCloseForm, submitImprovements,
 }) => (
   <div className={css.overview}>
     <h4 className={css['overview-header']}>Overview</h4>
     <p className={css.description}>{overview.description}</p>
     <div className={css.clock}>
-      <FaRegClock size={20} /><p className={css['open-closed']}><strong>{overview.isOpen ? 'Open Now' : 'Closed'}:</strong> Hours Here</p>
+      <FaRegClock size={20} /><p className={css['open-closed']}><strong>{overview.isOpen ? 'Open Now' : 'Closed'}:</strong> {overview.hours.open > 12 ? `${overview.hours.open - 12}pm` : `${overview.hours.open}am`} - {overview.hours.close}pm </p>
     </div>
     <div className={css.time}>
       <CgSandClock className={css.timeIcon} size={25} />
       <p className={css.duration}>
-        <strong>Suggested Duration: </strong>{overview.suggestedDuration} minutes
+        <strong>Suggested Duration: </strong>{overview.suggestedDuration > 60 ? `${(overview.suggestedDuration / 60).toFixed(1)} hours` : `${overview.suggestedDuration} minutes`}
       </p>
     </div>
     <div className={css.addressWithIcon}>
@@ -34,7 +35,6 @@ const Overview = ({
       clicked={clicked}
       openCloseForm={openCloseForm}
       submitImprovements={submitImprovements}
-      id={id}
     />
   </div>
 );
@@ -56,7 +56,6 @@ Overview.propTypes = {
   clicked: PropTypes.bool,
   openCloseForm: PropTypes.func,
   submitImprovements: PropTypes.func,
-  id: PropTypes.string,
 };
 
 Overview.defaultProps = {
@@ -67,7 +66,6 @@ Overview.defaultProps = {
   openCloseForm: () => {},
   submitImprovements: () => {},
   clicked: false,
-  id: 'Invalid',
 };
 
 export default Overview;

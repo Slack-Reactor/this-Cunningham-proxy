@@ -1,6 +1,6 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
+// const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -15,17 +15,11 @@ module.exports = {
   entry: './src/app.jsx',
   devtool: 'source-map',
   plugins: [
+    // new CleanWebpackPlugin(['dist/*']) for < v2 versions of CleanWebpackPlugin
     new CleanWebpackPlugin(),
     HTMLWebpackPluginConfig,
     new MiniCssExtractPlugin({
       filename: 'chris.[name].css',
-    }),
-    new CompressionPlugin({
-      filename: '[path][base].gz',
-      algorithm: 'gzip',
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0.8,
     }),
   ],
   module: {
