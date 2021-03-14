@@ -1,13 +1,10 @@
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-unused-vars */
 /* eslint-disable class-methods-use-this */
-import React, { Component } from 'react';
-import $ from 'jquery';
+import React, { Component, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import '../styles/style.css';
 import Card from '@material-ui/core/Card';
 import Rating from '@material-ui/lab/Rating';
-import { makeStyles } from '@material-ui/core/styles';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
@@ -129,8 +126,7 @@ class Adventure extends Component {
   }
 
   handleClick() {
-    const { updateLiked } = this.props;
-    const { adventure } = this.props;
+    const { updateLiked, adventure } = this.props;
     const { _id } = adventure;
     const { liked } = this.state;
     updateLiked(_id, liked)
