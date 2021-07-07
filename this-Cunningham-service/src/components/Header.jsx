@@ -4,7 +4,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { FiShare } from 'react-icons/fi';
 import css from '../styles/header.module.css';
 
-const bubbles = function (rating) {
+const bubbles = (rating) => {
   if (typeof rating !== 'number') {
     return;
   }
@@ -24,7 +24,9 @@ const Header = ({
   <div className={css.header}>
     <h1 className={css['header-lg']}>{current.attractionTitle}</h1>
     <div className={css['reviews-like']}>
-      <img className={css.bubbles} src={bubbles(current.averageRating)} alt="bubble ratings" /><p className={css.reviews}>{current.reviews} Reviews </p>
+      <div className={css['bubbles-reviews']}>
+        <img className={css.bubbles} src={bubbles(current.averageRating)} alt="bubble ratings" /><p className={css.reviews}>{current.reviews} Reviews </p>
+      </div>
       <div className={css.icon}>
         {current.likedStatus ? (
           <FaHeart color="red" size={20} onClick={() => updateLikeStatus(current._id)} onMouseEnter={updateHeartHover} onMouseLeave={updateHeartHover} />/* eslint-disable-line no-underscore-dangle */

@@ -1,5 +1,6 @@
 /* eslint-disable func-names, no-console  */
 const mongoose = require('mongoose');
+const faker = require('faker');
 const { ShowCase } = require('./index.js');
 
 const cities = [
@@ -102,6 +103,7 @@ const bools = [true, false];
 
 class Attraction {
   constructor(id) {
+    this.attractionId = id;
     this.attractionTitle = randomGenerator(null, attractionTitles);
     this.city = randomGenerator(null, cities);
     this.relativeRanking = [randomGenerator(1, 34), randomGenerator(35, 101)];
@@ -111,6 +113,7 @@ class Attraction {
     this.overview = {
       description: randomGenerator(null, descriptions),
       isOpen: randomGenerator(null, bools),
+      hours: { open: randomGenerator(7, 12), close: randomGenerator(2, 11) },
       suggestedDuration: randomGenerator(0, 200),
       address: randomGenerator(null, addresses),
     };
@@ -119,6 +122,9 @@ class Attraction {
     this.likedStatus = randomGenerator(null, bools);
     this.ticketPrice = randomGenerator(0, 500);
     this.averageRating = randomGenerator(0, 25) / 5;
+    this.closedDays = Array.from(new Array(randomGenerator(40, 80)), () => (
+      new Date(faker.date.future(1))
+    ));
   }
 }
 
@@ -126,7 +132,6 @@ const seedData = [];
 
 for (let i = 0; i < 100; i += 1) {
   const newAttraction = new Attraction(i);
-
   seedData.push(newAttraction);
 }
 

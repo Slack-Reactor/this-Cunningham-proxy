@@ -2,7 +2,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const https = require('https');
-const { auth } = require('../config/unsplash_config.js');
+const { auth } = require('../unsplash_config.js');
 
 // Node.js Function to save image from External URL.
 function saveImageToDisk(url, localPath) {
@@ -18,10 +18,10 @@ const searchAndSaveUnsplash = function (searchTerm, qty, page, relativePath) {
   axios.get(unsplashURL)
     .then(({ data }) => {
       data.results.forEach((result, i) => {
-        saveImageToDisk(result.urls.regular, `${relativePath}${i + 89}.jpg`);
+        saveImageToDisk(result.urls.regular, `${relativePath}${i + 0}.jpg`);
       });
     })
     .catch((err) => console.log(err));
 };
 
-searchAndSaveUnsplash('thailand', 30, 1, '../images/thailand_');
+searchAndSaveUnsplash('pug', 30, 1, 'images/pug_');

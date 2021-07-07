@@ -7,7 +7,21 @@ images
 /coverage.data
 /coverage/
 
-/public/bundle.js
+# /public/bundle.js
+dist
+public/bundle.js
 
 # production files
+
 dist
+unsplash_config.js
+
+# dist
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+docker-compose.debug.yml
+# docker-compose.yml
+data
+

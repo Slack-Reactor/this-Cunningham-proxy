@@ -1,0 +1,68 @@
+.calendar-container {
+  display: flex;
+}
+
+.ticketCounter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.counter {
+  font-size: large;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 5px 5px;
+}
+
+.counterButton {
+  height: 50px;
+  width: 50px;
+  background-color: #34E0A1;
+  color: #000000;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 30px;
+  border: none;
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  border: none;
+  border-radius: 2px;
+  height: 45px;
+  width: 50px;
+}
+
+.ticketText {
+  margin: 0 5px;
+}
+
+.purchaseTickets {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.purchaseTickets>h2 {
+  margin-left: 5px;
+}
+
+.purchaseBtn {
+  height: 50px;
+  width: 130px;
+  background-color: #34E0A1;
+  color: #000000;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 5px;
+  border: none;
+}

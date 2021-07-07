@@ -23,6 +23,11 @@ h1 {
   justify-content: space-between;
 }
 
+.bubbles-reviews {
+  display: flex;
+  align-items: center;
+}
+
 .bubbles {
   height: 16px;
   width: auto;
